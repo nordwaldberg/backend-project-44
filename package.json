@@ -1,0 +1,26 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "cli games",
+  "main": "bin/brain-games.js",
+  "type": "module",
+  "bin": {
+    "brain-games": "bin/brain-games.js"
+  },
+  "scripts": {
+    "test": "npm -v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nordwaldberg/backend-project-44.git"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "author": "nordwaldberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nordwaldberg/backend-project-44/issues"
+  },
+  "homepage": "https://github.com/nordwaldberg/backend-project-44#readme"
+}
