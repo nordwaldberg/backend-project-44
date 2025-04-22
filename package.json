@@ -5,10 +5,11 @@
   "main": "bin/brain-games.js",
   "type": "module",
   "bin": {
+    "brain-even": "bin/brain-even.js",
     "brain-games": "bin/brain-games.js"
   },
   "scripts": {
-    "test": "node bin/brain-games.js"
+    "test": "node bin/brain-even.js"
   },
   "repository": {
     "type": "git",
