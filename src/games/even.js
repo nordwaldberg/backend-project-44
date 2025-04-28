@@ -1,11 +1,13 @@
 import readlineSync from 'readline-sync';
-import { greeting } from './cli-utils.js';
-import { getNumber, isEven } from './utils.js';
-
-const answerOpposites = {
-  yes: '\'no\'',
-  no: '\'yes\'',
-};
+import { greeting } from '../cli-utils.js';
+import {
+  getNumber,
+  isEven,
+  proceed,
+  userLost,
+  userWon,
+} from '../utils.js';
+import { answerOpposites } from '../variables.js';
 
 const isCorrectAnswer = (num, realAnswer, answer) => {
   if ((realAnswer && answer === 'yes') || (!realAnswer && answer === 'no')) {
@@ -15,23 +17,8 @@ const isCorrectAnswer = (num, realAnswer, answer) => {
   return false;
 };
 
-const proceed = () => {
-  console.log('Correct!');
-};
-
-const userLost = (userAnswer, realAnswer, name) => {
-  const correctAnswer = answerOpposites[userAnswer] ?? (realAnswer ? '\'yes\'' : '\'no\'');
-
-  console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was ${correctAnswer}.`);
-  console.log(`Let's try again, ${name}!`);
-};
-
-const userWon = (name) => {
-  console.log(`Congratulations, ${name}!`);
-};
-
 const iteration = () => {
-  const currentNum = getNumber();
+  const currentNum = getNumber(false);
   const realResult = isEven(currentNum);
 
   console.log(`Question: ${currentNum}`);
@@ -48,7 +35,8 @@ const game = (iterations) => {
     const [result, realAnswer, userAnswer] = iteration();
 
     if (!result) {
-      userLost(userAnswer, realAnswer, username);
+      const correctAnswer = answerOpposites[userAnswer] ?? (realAnswer ? 'yes' : 'no');
+      userLost(userAnswer, correctAnswer, username);
       return;
     }
 
