@@ -19,5 +19,10 @@
 
 ### ◽ brain-gcd game:
 <div style="text-align: center">
-    <img src="assets/demo_gcd.gif" width="550" height="335" alt="demo_calc">
+    <img src="assets/demo_gcd.gif" width="550" height="337" alt="demo_calc">
+</div>
+
+### ◽ brain-progression game:
+<div style="text-align: center">
+    <img src="assets/demo_progression.gif" width="550" height="335" alt="demo_calc">
 </div>
