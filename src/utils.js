@@ -1,4 +1,9 @@
-import { mathOperations } from './variables.js';
+import {
+  mathOperations,
+  maxProgressionLength,
+  maxProgressionStartValue,
+  maxProgressionStep,
+} from './variables.js';
 
 const calculator = {
   '+': (a, b) => a + b,
@@ -28,6 +33,26 @@ const getGcd = (first, second) => {
   return Math.max(numA, numB);
 };
 
+const getProgression = () => {
+  const progression = [getNumber(true, maxProgressionStartValue)];
+
+  for (let i = 1; i < maxProgressionLength; i += 1) {
+    progression.push(progression[i - 1] + maxProgressionStep);
+  }
+
+  return progression;
+};
+
+const getProgressionWithHiddenElement = (progression) => {
+  const elementToHideIndex = getNumber(true, maxProgressionLength - 1);
+  const hiddenElement = progression[elementToHideIndex];
+
+  const progressionWithHiddenElement = [...progression];
+  progressionWithHiddenElement.splice(elementToHideIndex, 1, '..');
+
+  return [progressionWithHiddenElement, hiddenElement];
+};
+
 const getExpression = (maxOperandValue) => {
   const leftOperand = getNumber(true, maxOperandValue);
   const rightOperand = getNumber(true, maxOperandValue);
@@ -55,6 +80,8 @@ export {
   isEven,
   getNumber,
   getExpression,
+  getProgression,
+  getProgressionWithHiddenElement,
   getGcd,
   proceed,
   userLost,
