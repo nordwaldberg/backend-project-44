@@ -16,3 +16,8 @@
 <div style="text-align: center">
     <img src="assets/demo_calc.gif" width="550" height="340" alt="demo_calc">
 </div>
+
+### ◽ brain-gcd game:
+<div style="text-align: center">
+    <img src="assets/demo_gcd.gif" width="550" height="335" alt="demo_calc">
+</div>
