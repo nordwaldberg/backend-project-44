@@ -14,6 +14,20 @@ const getNumber = (includeZero = true, rangeEnd = 100) => {
   return Math.floor(Math.random() * rangeEnd) + 1;
 };
 
+const getGcd = (first, second) => {
+  let [numA, numB] = [first, second];
+
+  while (numA > 0 && numB > 0) {
+    if (numA >= numB) {
+      numA = numA % numB;
+    } else {
+      numB = numB % numA;
+    }
+  }
+
+  return Math.max(numA, numB);
+};
+
 const getExpression = (maxOperandValue) => {
   const leftOperand = getNumber(true, maxOperandValue);
   const rightOperand = getNumber(true, maxOperandValue);
@@ -41,6 +55,7 @@ export {
   isEven,
   getNumber,
   getExpression,
+  getGcd,
   proceed,
   userLost,
   userWon,

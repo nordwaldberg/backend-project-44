@@ -27,6 +27,7 @@ export default [
       'import/prefer-default-export': 'off',
       'import/no-extraneous-dependencies': ['error', { devDependencies: ['eslint.config.js'] }],
       'no-underscore-dangle': ['error', { allow: ['__filename', '__dirname'] }],
+      'operator-assignment': 'off',
     },
   },
 ];
