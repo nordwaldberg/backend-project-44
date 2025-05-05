@@ -24,7 +24,7 @@ const iteration = () => {
 
 const game = (iterations) => {
   const username = greeting();
-  console.log('Answer "yes" if the number is prime, otherwise answer "no".');
+  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
 
   for (let i = 0; i < iterations; i += 1) {
     const [result, realAnswer, userAnswer] = iteration();
