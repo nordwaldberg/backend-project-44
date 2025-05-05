@@ -1,12 +1,15 @@
 import readlineSync from 'readline-sync';
-import { greeting } from '../cli-utils.js';
 import {
-  getNumber, isCorrectAnswer,
-  isEven,
+  greeting,
   proceed,
   userLost,
   userWon,
-} from '../utils.js';
+} from '../utils/cli-utils.js';
+import { getNumber } from '../utils/expressionUtils.js';
+import {
+  isCorrectAnswer,
+  isEven,
+} from '../utils/predicates.js';
 import { answerOpposites } from '../variables.js';
 
 const iteration = () => {

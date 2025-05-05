@@ -1,11 +1,11 @@
 import readlineSync from 'readline-sync';
-import { greeting } from '../cli-utils.js';
 import {
-  getExpression,
+  greeting,
   proceed,
   userLost,
   userWon,
-} from '../utils.js';
+} from '../utils/cli-utils.js';
+import { getExpression } from '../utils/expressionUtils.js';
 
 const iteration = () => {
   const [currentExpression, realResult] = getExpression(20);

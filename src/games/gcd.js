@@ -1,12 +1,14 @@
 import readlineSync from 'readline-sync';
-import { greeting } from '../cli-utils.js';
 import {
-  getGcd,
-  getNumber,
+  greeting,
   proceed,
   userLost,
   userWon,
-} from '../utils.js';
+} from '../utils/cli-utils.js';
+import {
+  getGcd,
+  getNumber,
+} from '../utils/expressionUtils.js';
 
 const iteration = () => {
   const numA = getNumber(false, 50);

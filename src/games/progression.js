@@ -1,12 +1,14 @@
 import readlineSync from 'readline-sync';
-import { greeting } from '../cli-utils.js';
 import {
-  getProgression,
-  getProgressionWithHiddenElement,
+  greeting,
   proceed,
   userLost,
   userWon,
-} from '../utils.js';
+} from '../utils/cli-utils.js';
+import {
+  getProgression,
+  getProgressionWithHiddenElement,
+} from '../utils/expressionUtils.js';
 
 const iteration = () => {
   const progression = getProgression();

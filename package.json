@@ -13,7 +13,7 @@
     "brain-games": "bin/brain-games.js"
   },
   "scripts": {
-    "test": "node src/games/progression.js"
+    "test": "node src/cli.js"
   },
   "repository": {
     "type": "git",
