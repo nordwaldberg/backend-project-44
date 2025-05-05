@@ -28,9 +28,10 @@ export default [
       'import/no-extraneous-dependencies': ['error', { devDependencies: ['eslint.config.js'] }],
       'no-underscore-dangle': ['error', { allow: ['__filename', '__dirname'] }],
       'operator-assignment': 'off',
-      semi: ['error', 'never'],
+      'semi': ['error', 'never'],
       'arrow-parens': 'off',
       'brace-style': 'off',
+      'quote-props': 'off',
     },
   },
 ]
