@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
 import { game } from '../src/games/progression.js';
-import { iterations } from '../src/variables.js';
+import { gameIterations } from '../src/variables.js';
 
-game(iterations);
+game(gameIterations);

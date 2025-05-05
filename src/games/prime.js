@@ -1,8 +1,9 @@
 import readlineSync from 'readline-sync';
 import { greeting } from '../cli-utils.js';
 import {
-  getNumber, isCorrectAnswer,
-  isEven,
+  getNumber,
+  isCorrectAnswer,
+  isPrime,
   proceed,
   userLost,
   userWon,
@@ -11,7 +12,7 @@ import { answerOpposites } from '../variables.js';
 
 const iteration = () => {
   const currentNum = getNumber(false);
-  const realResult = isEven(currentNum);
+  const realResult = isPrime(currentNum);
 
   console.log(`Question: ${currentNum}`);
   const userAnswer = readlineSync.question('Your answer: ');
@@ -21,7 +22,7 @@ const iteration = () => {
 
 const game = (iterations) => {
   const username = greeting();
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  console.log('Answer "yes" if the number is prime, otherwise answer "no".');
 
   for (let i = 0; i < iterations; i += 1) {
     const [result, realAnswer, userAnswer] = iteration();

@@ -1,4 +1,4 @@
-const iterations = 3;
+const gameIterations = 3;
 const maxProgressionLength = 10;
 const maxProgressionStep = 10;
 const maxProgressionStartValue = 50;
@@ -11,7 +11,7 @@ const answerOpposites = {
 const mathOperations = ['+', '-', '*'];
 
 export {
-  iterations,
+  gameIterations,
   answerOpposites,
   mathOperations,
   maxProgressionLength,
