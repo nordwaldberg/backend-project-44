@@ -1,39 +1,20 @@
-import readlineSync from 'readline-sync'
-import {
-  greeting,
-  proceed,
-  userLost,
-  userWon,
-} from '../utils/cli-utils.js'
 import { getExpression } from '../utils/expressionUtils.js'
+import { gameCore } from './core.js'
 
-const iteration = () => {
+const getCalcGameValue = () => {
   const [currentExpression, realResult] = getExpression(20)
 
-  console.log(`Question: ${currentExpression}`)
-  const userAnswer = readlineSync.question('Your answer: ')
+  const question = `${currentExpression}`
 
-  return [realResult === Number(userAnswer), realResult, userAnswer]
-}
-
-const game = (iterations) => {
-  const username = greeting()
-  console.log('What is the result of the expression?')
-
-  for (let i = 0; i < iterations; i += 1) {
-    const [result, realAnswer, userAnswer] = iteration()
-
-    if (!result) {
-      userLost(userAnswer, realAnswer, username)
-      return
-    }
-
-    proceed()
+  return {
+    questionTitle: question,
+    realResult: realResult,
   }
-
-  userWon(username)
 }
 
-export {
-  game,
+const gameValues = {
+  title: 'What is the result of the expression?',
+  getGameValue: getCalcGameValue,
 }
+
+export const calcGame = iterationsCount => gameCore(iterationsCount, gameValues)

@@ -1,44 +1,36 @@
-import readlineSync from 'readline-sync'
-import {
-  greeting,
-  proceed,
-  userLost,
-  userWon,
-} from '../utils/cli-utils.js'
-import {
-  getGcd,
-  getNumber,
-} from '../utils/expressionUtils.js'
+import { getNumber } from '../utils/expressionUtils.js'
+import { gameCore } from './core.js'
 
-const iteration = () => {
+const getGcd = (first, second) => {
+  let [numA, numB] = [first, second]
+
+  while (numA > 0 && numB > 0) {
+    if (numA >= numB) {
+      numA = numA % numB
+    }
+    else {
+      numB = numB % numA
+    }
+  }
+  return Math.max(numA, numB)
+}
+
+const getGcdGameValue = () => {
   const numA = getNumber(false, 50)
   const numB = getNumber(false, 50)
+
+  const question = `${numA} ${numB}`
   const realResult = getGcd(numA, numB)
 
-  console.log(`Question: ${numA} ${numB}`)
-  const userAnswer = readlineSync.question('Your answer: ')
-
-  return [realResult === Number(userAnswer), realResult, userAnswer]
-}
-
-const game = (iterations) => {
-  const username = greeting()
-  console.log('Find the greatest common divisor of given numbers.')
-
-  for (let i = 0; i < iterations; i += 1) {
-    const [result, realAnswer, userAnswer] = iteration()
-
-    if (!result) {
-      userLost(userAnswer, realAnswer, username)
-      return
-    }
-
-    proceed()
+  return {
+    questionTitle: question,
+    realResult,
   }
-
-  userWon(username)
 }
 
-export {
-  game,
+const gameValues = {
+  title: 'Find the greatest common divisor of given numbers.',
+  getGameValue: getGcdGameValue,
 }
+
+export const gcdGame = iterationsCount => gameCore(iterationsCount, gameValues)

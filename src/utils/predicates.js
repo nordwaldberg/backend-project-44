@@ -14,16 +14,7 @@ const isPrime = (num) => {
   return true
 }
 
-const isCorrectAnswer = (num, realAnswer, answer) => {
-  if ((realAnswer && answer === 'yes') || (!realAnswer && answer === 'no')) {
-    return true
-  }
-
-  return false
-}
-
 export {
   isEven,
   isPrime,
-  isCorrectAnswer,
 }

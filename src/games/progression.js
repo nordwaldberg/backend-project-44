@@ -1,43 +1,46 @@
-import readlineSync from 'readline-sync'
+import { getNumber } from '../utils/expressionUtils.js'
 import {
-  greeting,
-  proceed,
-  userLost,
-  userWon,
-} from '../utils/cli-utils.js'
-import {
-  getProgression,
-  getProgressionWithHiddenElement,
-} from '../utils/expressionUtils.js'
+  maxProgressionLength,
+  maxProgressionStartValue,
+  maxProgressionStep,
+} from '../variables.js'
+import { gameCore } from './core.js'
 
-const iteration = () => {
+const getProgression = () => {
+  const progression = [getNumber(true, maxProgressionStartValue)]
+
+  for (let i = 1; i < maxProgressionLength; i += 1) {
+    progression.push(progression[i - 1] + maxProgressionStep)
+  }
+
+  return progression
+}
+
+const getProgressionWithHiddenElement = (progression) => {
+  const elementToHideIndex = getNumber(true, maxProgressionLength - 1)
+  const hiddenElement = progression[elementToHideIndex]
+
+  const progressionWithHiddenElement = [...progression]
+  progressionWithHiddenElement.splice(elementToHideIndex, 1, '..')
+
+  return [progressionWithHiddenElement, hiddenElement]
+}
+
+const getProgressionGameValue = () => {
   const progression = getProgression()
   const [progressionWithHiddenNum, hiddenNum] = getProgressionWithHiddenElement(progression)
 
-  console.log(`Question: ${progressionWithHiddenNum.join(' ')}`)
-  const userAnswer = readlineSync.question('Your answer: ')
+  const question = `${progressionWithHiddenNum.join(' ')}`
 
-  return [hiddenNum === Number(userAnswer), hiddenNum, userAnswer]
-}
-
-const game = (iterations) => {
-  const username = greeting()
-  console.log('What number is missing in the progression?')
-
-  for (let i = 0; i < iterations; i += 1) {
-    const [result, realAnswer, userAnswer] = iteration()
-
-    if (!result) {
-      userLost(userAnswer, realAnswer, username)
-      return
-    }
-
-    proceed()
+  return {
+    questionTitle: question,
+    realResult: hiddenNum,
   }
-
-  userWon(username)
 }
 
-export {
-  game,
+const gameValues = {
+  title: 'What number is missing in the progression?',
+  getGameValue: getProgressionGameValue,
 }
+
+export const progressionGame = iterationsCount => gameCore(iterationsCount, gameValues)

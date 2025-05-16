@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { game } from '../src/games/gcd.js'
+import { gcdGame } from '../src/games/gcd.js'
 import { gameIterations } from '../src/variables.js'
 
-game(gameIterations)
+gcdGame(gameIterations)

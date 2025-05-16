@@ -1,46 +1,25 @@
-import readlineSync from 'readline-sync'
 import {
-  greeting,
-  proceed,
-  userLost,
-  userWon,
-} from '../utils/cli-utils.js'
-import { getNumber } from '../utils/expressionUtils.js'
-import {
-  isCorrectAnswer,
-  isEven,
-} from '../utils/predicates.js'
-import { answerOpposites } from '../variables.js'
+  getNumber,
+  getYesOrNoFromBoolean,
+} from '../utils/expressionUtils.js'
+import { isEven } from '../utils/predicates.js'
+import { gameCore } from './core.js'
 
-const iteration = () => {
+const getEvenGameValue = () => {
   const currentNum = getNumber(false)
-  const realResult = isEven(currentNum)
 
-  console.log(`Question: ${currentNum}`)
-  const userAnswer = readlineSync.question('Your answer: ')
+  const question = `${currentNum}`
+  const realResult = getYesOrNoFromBoolean(isEven(currentNum))
 
-  return [isCorrectAnswer(currentNum, realResult, userAnswer), realResult, userAnswer]
-}
-
-const game = (iterations) => {
-  const username = greeting()
-  console.log('Answer "yes" if the number is even, otherwise answer "no".')
-
-  for (let i = 0; i < iterations; i += 1) {
-    const [result, realAnswer, userAnswer] = iteration()
-
-    if (!result) {
-      const correctAnswer = answerOpposites[userAnswer] ?? (realAnswer ? 'yes' : 'no')
-      userLost(userAnswer, correctAnswer, username)
-      return
-    }
-
-    proceed()
+  return {
+    questionTitle: question,
+    realResult,
   }
-
-  userWon(username)
 }
 
-export {
-  game,
+const gameValues = {
+  title: 'Answer "yes" if the number is even, otherwise answer "no".',
+  getGameValue: getEvenGameValue,
 }
+
+export const evenGame = iterationsCount => gameCore(iterationsCount, gameValues)
