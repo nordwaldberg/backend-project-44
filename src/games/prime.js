@@ -2,8 +2,21 @@ import {
   getNumber,
   getYesOrNoFromBoolean,
 } from '../utils/expressionUtils.js'
-import { isPrime } from '../utils/predicates.js'
-import { gameCore } from './core.js'
+import { gameCore } from '../core.js'
+
+const isPrime = (num) => {
+  if (num <= 1) {
+    return false
+  }
+
+  for (let i = 2; i <= Math.sqrt(num); i += 1) {
+    if (num % i === 0) {
+      return false
+    }
+  }
+
+  return true
+}
 
 const getPrimeGameValue = () => {
   const currentNum = getNumber(false)

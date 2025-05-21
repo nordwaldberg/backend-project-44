@@ -1,5 +1,5 @@
 import { getNumber } from '../utils/expressionUtils.js'
-import { gameCore } from './core.js'
+import { gameCore } from '../core.js'
 
 const getGcd = (first, second) => {
   let [numA, numB] = [first, second]

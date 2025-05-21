@@ -4,7 +4,7 @@ import {
   proceed,
   userLost,
   userWon,
-} from '../utils/cli-utils.js'
+} from './utils/cli-utils.js'
 
 const iteration = ({ questionTitle, realResult }) => {
   console.log(`Question: ${questionTitle}`)

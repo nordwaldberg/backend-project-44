@@ -4,7 +4,7 @@ import {
   maxProgressionStartValue,
   maxProgressionStep,
 } from '../variables.js'
-import { gameCore } from './core.js'
+import { gameCore } from '../core.js'
 
 const getProgression = () => {
   const progression = [getNumber(true, maxProgressionStartValue)]

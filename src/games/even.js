@@ -2,8 +2,9 @@ import {
   getNumber,
   getYesOrNoFromBoolean,
 } from '../utils/expressionUtils.js'
-import { isEven } from '../utils/predicates.js'
-import { gameCore } from './core.js'
+import { gameCore } from '../core.js'
+
+const isEven = num => num % 2 === 0
 
 const getEvenGameValue = () => {
   const currentNum = getNumber(false)
